@@ -1,4 +1,4 @@
-package com.mod;
+package com.mod.assignment1rpgcharacters;
 
 public class Main {
 

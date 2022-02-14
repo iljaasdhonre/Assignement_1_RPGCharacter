@@ -1,4 +1,4 @@
-package Items;
+package com.mod.assignment1rpgcharacters.Items;
 
 enum ArmorType{
     Cloth,

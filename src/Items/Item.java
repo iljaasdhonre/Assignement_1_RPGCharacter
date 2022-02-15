@@ -5,9 +5,19 @@ import Characters.Slot;
 public abstract class Item {
 
     //Fields
-    protected String name;
-    protected int level;
+    private String name;
+    private int level;
     private Slot itemSlot;
+
+    //Constructor
+    protected Item() {
+    }
+
+    protected Item(String name, int level, Slot itemSlot) {
+        this.name = name;
+        this.level = level;
+        this.itemSlot = itemSlot;
+    }
 
     //Getter and setters
     public String getName() {

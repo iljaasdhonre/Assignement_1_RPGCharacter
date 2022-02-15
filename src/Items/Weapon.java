@@ -1,5 +1,7 @@
 package Items;
 
+import Characters.Slot;
+
 enum WeaponType {
     Axe,
     Bow,
@@ -15,8 +17,17 @@ public class Weapon extends Item{
     private WeaponType weaponType;
     private double attackSpeed;
 
-    //Getters and setters
+    //Constructor
+    public Weapon() {
+    }
 
+    public Weapon(String name, int level, Slot itemSlot, WeaponType weaponType, double attackSpeed) {
+        super(name, level, itemSlot);
+        this.weaponType = weaponType;
+        this.attackSpeed = attackSpeed;
+    }
+
+    //Getters and setters
     public WeaponType getWeaponType() {
         return weaponType;
     }

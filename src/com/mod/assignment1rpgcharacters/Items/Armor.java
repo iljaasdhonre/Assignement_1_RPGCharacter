@@ -4,12 +4,6 @@ package com.mod.assignment1rpgcharacters.Items;
 import com.mod.assignment1rpgcharacters.Attributes.PrimaryAttribute;
 import com.mod.assignment1rpgcharacters.Characters.Slot;
 
-enum ArmorType{
-    Cloth,
-    Leather,
-    Mail,
-    Plate
-}
 public class Armor extends Item{
 
     //Fields
@@ -18,10 +12,6 @@ public class Armor extends Item{
 
     //Constructor
     public Armor() {
-    }
-
-    public Armor(String name, int level, Slot itemSlot) {
-        super(name, level, itemSlot);
     }
 
     //Getters and setters

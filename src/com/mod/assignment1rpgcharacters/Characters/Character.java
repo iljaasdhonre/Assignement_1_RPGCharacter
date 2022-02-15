@@ -16,8 +16,6 @@ abstract class Character {
     protected PrimaryAttribute primaryAttribute;
 
     //Constructor
-
-
     public Character(String name, PrimaryAttribute primaryAttribute) {
         this.name = name;
         this.level = 1;

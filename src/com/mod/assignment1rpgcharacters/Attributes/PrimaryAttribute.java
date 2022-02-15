@@ -1,4 +1,4 @@
-package Attributes;
+package com.mod.assignment1rpgcharacters.Attributes;
 
 public class PrimaryAttribute {
 

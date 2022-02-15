@@ -1,7 +1,7 @@
-package Items;
+package com.mod.assignment1rpgcharacters.Items;
 
-import Attributes.PrimaryAttribute;
-import Characters.Slot;
+import com.mod.assignment1rpgcharacters.Attributes.PrimaryAttribute;
+import com.mod.assignment1rpgcharacters.Characters.Slot;
 
 enum ArmorType{
     Cloth,

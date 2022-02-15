@@ -1,7 +1,7 @@
-package Characters;
+package com.mod.assignment1rpgcharacters.Characters;
 
-import Attributes.PrimaryAttribute;
-import Items.Item;
+import com.mod.assignment1rpgcharacters.Attributes.PrimaryAttribute;
+import com.mod.assignment1rpgcharacters.Items.Item;
 
 import java.util.HashMap;
 
@@ -16,8 +16,6 @@ abstract class Character {
     protected PrimaryAttribute primaryAttribute;
 
     //Constructor
-
-
     public Character(String name, PrimaryAttribute primaryAttribute) {
         this.name = name;
         this.level = 1;

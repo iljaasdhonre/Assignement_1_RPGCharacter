@@ -1,6 +1,6 @@
-package Items;
+package com.mod.assignment1rpgcharacters.Items;
 
-import Characters.Slot;
+import com.mod.assignment1rpgcharacters.Characters.Slot;
 
 enum WeaponType {
     Axe,

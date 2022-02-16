@@ -3,18 +3,19 @@ package com.mod.assignment1rpgcharacters.Characters;
 import com.mod.assignment1rpgcharacters.Attributes.PrimaryAttribute;
 import com.mod.assignment1rpgcharacters.Exceptions.InvalidArmorException;
 import com.mod.assignment1rpgcharacters.Exceptions.InvalidWeaponException;
+import com.mod.assignment1rpgcharacters.Items.Armor;
 import com.mod.assignment1rpgcharacters.Items.Item;
 import com.mod.assignment1rpgcharacters.Items.Weapon;
 
 import java.util.HashMap;
 
 // base class for all characters
-public abstract class Character{
+public abstract class Character {
 
     //Fields
     protected String name;
     protected int level;
-    protected int totalPrimaryAttributes;
+    protected PrimaryAttribute totalPrimaryAttribute;
     protected HashMap<Slot, Item> equipment;
     protected PrimaryAttribute primaryAttribute;
     protected double characterDPS;
@@ -23,6 +24,7 @@ public abstract class Character{
     public Character(String name, PrimaryAttribute primaryAttribute) {
         this.name = name;
         this.level = 1;
+        this.equipment = new HashMap<Slot, Item>();
         this.primaryAttribute = primaryAttribute;
     }
 
@@ -43,12 +45,12 @@ public abstract class Character{
         this.level = level;
     }
 
-    public int getTotalPrimaryAttributes() {
-        return totalPrimaryAttributes;
+    public PrimaryAttribute getTotalPrimaryAttribute() {
+        return totalPrimaryAttribute;
     }
 
-    public void setTotalPrimaryAttributes(int totalPrimaryAttributes) {
-        this.totalPrimaryAttributes = totalPrimaryAttributes;
+    public void setTotalPrimaryAttribute(PrimaryAttribute totalPrimaryAttribute) {
+        this.totalPrimaryAttribute = totalPrimaryAttribute;
     }
 
     public HashMap<Slot, Item> getEquipment() {
@@ -67,16 +69,25 @@ public abstract class Character{
         this.primaryAttribute = primaryAttribute;
     }
 
-    public double getCharacterDPS() { return characterDPS; }
+    public double getCharacterDPS() {
+        return characterDPS;
+    }
 
-    public void setCharacterDPS(double characterDPS) { this.characterDPS = characterDPS; }
+    public void setCharacterDPS(double characterDPS) {
+        this.characterDPS = characterDPS;
+    }
 
     //Methods
     abstract void levelUp();
 
-    abstract void equipItem(Item item) throws InvalidArmorException, InvalidWeaponException;
+    abstract double calculateCharacterDPS();
 
-    void updateAttributes(int strength, int dexterity, int intelligence){
+    abstract void equipWeapon(Weapon weapon) throws InvalidWeaponException;
+
+    abstract void equipArmor(Armor armor, Slot itemSlot) throws InvalidArmorException;
+
+    //Update the PRIMARY attributes of character with given parameters
+    void updatePrimaryAttributes(int strength, int dexterity, int intelligence) {
         setPrimaryAttribute(new PrimaryAttribute(
                 this.primaryAttribute.getStrength() + strength,
                 this.primaryAttribute.getDexterity() + dexterity,
@@ -84,12 +95,13 @@ public abstract class Character{
         );
     }
 
-    public void calculateDPS() {
-        if(this.equipment.get(Slot.WEAPON) != null){
-            Weapon weapon = (Weapon) this.equipment.get(Slot.WEAPON);
-            this.setCharacterDPS(weapon.getWeaponDPS() * (1+totalPrimaryAttributes/100));
-        }
-        else this.setCharacterDPS(1+totalPrimaryAttributes/100);
+    //Update the TOTAL primary attributes of character with given attributes
+    void updateTotalPrimaryAttributes(PrimaryAttribute armorPrimaryAttribute) {
+        setTotalPrimaryAttribute(new PrimaryAttribute(
+                this.primaryAttribute.getStrength() + armorPrimaryAttribute.getStrength(),
+                this.primaryAttribute.getDexterity() + armorPrimaryAttribute.getDexterity(),
+                this.primaryAttribute.getIntelligence() + armorPrimaryAttribute.getIntelligence())
+        );
     }
 
 

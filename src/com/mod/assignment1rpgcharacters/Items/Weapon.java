@@ -2,16 +2,6 @@ package com.mod.assignment1rpgcharacters.Items;
 
 import com.mod.assignment1rpgcharacters.Characters.Slot;
 
-enum WeaponType {
-    Axe,
-    Bow,
-    Dagger,
-    Hammer,
-    Staff,
-    Sword,
-    Wand
-}
-
 public class Weapon extends Item {
 
     //Fields
@@ -22,14 +12,6 @@ public class Weapon extends Item {
 
     //Constructor
     public Weapon() {
-    }
-
-    public Weapon(String name, int level, Slot itemSlot, WeaponType weaponType, int damage, double attackSpeed, double weaponDPS) {
-        super(name, level, itemSlot);
-        this.weaponType = weaponType;
-        this.damage = damage;
-        this.attackSpeed = attackSpeed;
-        this.weaponDPS = weaponDPS;
     }
 
     //Getters and setters
@@ -53,8 +35,7 @@ public class Weapon extends Item {
 
     public void setDamage(int damage) { this.damage = damage; }
 
-    public double getWeaponDPS() { return getDamage() * getAttackSpeed(); }
+    public double getWeaponDPS() { return this.weaponDPS; }
 
-
-
+    public void setWeaponDPS() { this.weaponDPS = getDamage() * getAttackSpeed(); }
 }

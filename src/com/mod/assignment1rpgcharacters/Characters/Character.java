@@ -108,6 +108,8 @@ public abstract class Character {
         );
     }
 
+    //Calculate the characters DPS(damage per second).
+    // If a weapon is equipped the weapon's dps will be added to the characters dps
     double calculateCharacterDPS(double totalMainAttribute) {
         if (this.equipment.get(Slot.WEAPON) != null) {
             Weapon weapon = (Weapon) this.equipment.get(Slot.WEAPON);
@@ -117,6 +119,7 @@ public abstract class Character {
         return this.getCharacterDPS();
     }
 
+    //Return a summary of the characters details
     public String getDetails() {
         StringBuilder detailsString = new StringBuilder();
 

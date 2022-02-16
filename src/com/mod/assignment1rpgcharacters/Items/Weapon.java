@@ -1,7 +1,5 @@
 package com.mod.assignment1rpgcharacters.Items;
 
-import com.mod.assignment1rpgcharacters.Characters.Slot;
-
 public class Weapon extends Item {
 
     //Fields

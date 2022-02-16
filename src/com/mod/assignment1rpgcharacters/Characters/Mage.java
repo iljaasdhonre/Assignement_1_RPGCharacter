@@ -23,15 +23,14 @@ public class Mage extends Character {
     }
 
     //Returns the characters dps by calling super.calculateCharacterDPS()
-    public double calculateCharacterDPS() {
-        return calculateCharacterDPS(totalPrimaryAttribute.getIntelligence());
+    public void calculateCharacterDPS() {
+        calculateCharacterDPS(totalPrimaryAttribute.getIntelligence());
     }
 
     //Checks whether a weapon is suitable to be equipped by this character otherwise throws an exception
     @Override
     public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
-        if (weapon.getWeaponType() == WeaponType.WAND
-                || weapon.getWeaponType() == WeaponType.STAFF
+        if (weapon.getWeaponType() == WeaponType.WAND || weapon.getWeaponType() == WeaponType.STAFF
                 && weapon.getLevel() <= this.getLevel()) {
             weapon.setWeaponDPS();
             equipment.put(Slot.WEAPON, weapon);

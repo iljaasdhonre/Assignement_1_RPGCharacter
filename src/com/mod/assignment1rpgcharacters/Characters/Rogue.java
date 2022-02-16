@@ -14,24 +14,15 @@ public class Rogue extends Character {
                 new PrimaryAttribute(2, 6, 1));
     }
 
-    //Increases level by 1 and update attributes accordingly
-    @Override
-    void levelUp() {
-        setLevel(this.level += 1);
-        updatePrimaryAttributes(1, 4, 1);
+    //Increases level by 1 and update attributes accordingly by calling super.levelUp()
+    public void levelUp() {
+        levelUp(1, 4, 1);
     }
 
-    //Returns the characters dps
-    @Override
-    double calculateCharacterDPS() {
-        double dexterity = totalPrimaryAttribute.getDexterity();
-        if (this.equipment.get(Slot.WEAPON) != null) {
-            Weapon weapon = (Weapon) this.equipment.get(Slot.WEAPON);
-            this.setCharacterDPS(weapon.getWeaponDPS() * (1 + dexterity / 100));
-        } else this.setCharacterDPS(1 + dexterity / 100);
-        return this.getCharacterDPS();
+    //Returns the characters dps by calling super.calculateCharacterDPS()
+    public double calculateCharacterDPS() {
+        return calculateCharacterDPS(totalPrimaryAttribute.getDexterity());
     }
-
 
     //Checks whether a weapon is suitable to be equipped by this character otherwise throws an exception
     @Override
@@ -58,5 +49,4 @@ public class Rogue extends Character {
             throw new InvalidArmorException("You are not allowed to equip this armor!");
         }
     }
-
 }

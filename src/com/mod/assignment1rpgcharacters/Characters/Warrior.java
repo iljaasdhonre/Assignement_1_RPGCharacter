@@ -13,22 +13,14 @@ public class Warrior extends Character {
                 new PrimaryAttribute(5, 2, 1));
     }
 
-    //Increases level by 1 and update attributes accordingly
-    @Override
-    void levelUp() {
-        setLevel(this.level += 1);
-        updatePrimaryAttributes(3, 2, 1);
+    //Increases level by 1 and update attributes accordingly by calling super.levelUp()
+    public void levelUp() {
+        levelUp(3, 2, 1);
     }
 
-    //Returns the characters dps
-    @Override
-    double calculateCharacterDPS() {
-        double strength = totalPrimaryAttribute.getStrength();
-        if (this.equipment.get(Slot.WEAPON) != null) {
-            Weapon weapon = (Weapon) this.equipment.get(Slot.WEAPON);
-            this.setCharacterDPS(weapon.getWeaponDPS() * (1 + strength / 100));
-        } else this.setCharacterDPS(1 + strength / 100);
-        return this.getCharacterDPS();
+    //Returns the characters dps by calling super.calculateCharacterDPS()
+    public double calculateCharacterDPS() {
+        return calculateCharacterDPS(totalPrimaryAttribute.getStrength());
     }
 
     //Checks whether a weapon is suitable to be equipped by this character otherwise throws an exception
@@ -57,5 +49,4 @@ public class Warrior extends Character {
             throw new InvalidArmorException("You are not allowed to equip this armor!");
         }
     }
-
 }

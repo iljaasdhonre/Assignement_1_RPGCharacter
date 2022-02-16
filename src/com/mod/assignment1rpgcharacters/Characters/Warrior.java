@@ -19,17 +19,18 @@ public class Warrior extends Character {
     }
 
     //Returns the characters dps by calling super.calculateCharacterDPS()
-    public double calculateCharacterDPS() {
-        return calculateCharacterDPS(totalPrimaryAttribute.getStrength());
+    public void calculateCharacterDPS() {
+        calculateCharacterDPS(totalPrimaryAttribute.getStrength());
     }
 
     //Checks whether a weapon is suitable to be equipped by this character otherwise throws an exception
     @Override
-    void equipWeapon(Weapon weapon) throws InvalidWeaponException {
-        if (weapon.getWeaponType() == WeaponType.AXE
+    public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
+
+        if (weapon.getLevel() <= this.getLevel() &&
+                weapon.getWeaponType() == WeaponType.AXE
                 || weapon.getWeaponType() == WeaponType.HAMMER
-                || weapon.getWeaponType() == WeaponType.SWORD
-                && weapon.getLevel() <= this.getLevel()) {
+                || weapon.getWeaponType().equals(WeaponType.SWORD)) {
             weapon.setWeaponDPS();
             equipment.put(Slot.WEAPON, weapon);
         } else {
@@ -39,7 +40,7 @@ public class Warrior extends Character {
 
     //Checks whether an armor is suitable to be equipped by this character otherwise throws an exception
     @Override
-    void equipArmor(Armor armor, Slot itemSlot) throws InvalidArmorException {
+    public void equipArmor(Armor armor, Slot itemSlot) throws InvalidArmorException {
         if (armor.getArmorType() == ArmorType.MAIL
                 || armor.getArmorType() == ArmorType.PLATE
                 && armor.getLevel() <= this.getLevel()) {

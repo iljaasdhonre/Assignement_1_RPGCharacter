@@ -20,13 +20,13 @@ public class Rogue extends Character {
     }
 
     //Returns the characters dps by calling super.calculateCharacterDPS()
-    public double calculateCharacterDPS() {
-        return calculateCharacterDPS(totalPrimaryAttribute.getDexterity());
+    public void calculateCharacterDPS() {
+        calculateCharacterDPS(totalPrimaryAttribute.getDexterity());
     }
 
     //Checks whether a weapon is suitable to be equipped by this character otherwise throws an exception
     @Override
-    void equipWeapon(Weapon weapon) throws InvalidWeaponException {
+    public void equipWeapon(Weapon weapon) throws InvalidWeaponException {
         if (weapon.getWeaponType() == WeaponType.DAGGER
                 || weapon.getWeaponType() == WeaponType.SWORD
                 && weapon.getLevel() <= this.getLevel()) {
@@ -39,7 +39,7 @@ public class Rogue extends Character {
 
     //Checks whether an armor is suitable to be equipped by this character otherwise throws an exception
     @Override
-    void equipArmor(Armor armor, Slot itemSlot) throws InvalidArmorException {
+    public void equipArmor(Armor armor, Slot itemSlot) throws InvalidArmorException {
         if (armor.getArmorType() == ArmorType.LEATHER
                 || armor.getArmorType() == ArmorType.MAIL
                 && armor.getLevel() <= this.getLevel()) {

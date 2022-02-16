@@ -117,4 +117,15 @@ public abstract class Character {
         return this.getCharacterDPS();
     }
 
+    public String getDetails() {
+        StringBuilder detailsString = new StringBuilder();
+
+        return detailsString.append(
+                "Character: " + this.getName() + "\n" +
+                        "Level: " + this.getLevel() + "\n" +
+                        "Strength: " + this.getTotalPrimaryAttribute().getStrength() + "\n" +
+                        "Dexterity: " + this.getTotalPrimaryAttribute().getDexterity() + "\n" +
+                        "Intelligence: " + this.getTotalPrimaryAttribute().getIntelligence() + "\n" +
+                        "DPS: " + this.getCharacterDPS()).toString();
+    }
 }

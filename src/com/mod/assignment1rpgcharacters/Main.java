@@ -40,11 +40,7 @@ public class Main {
 
         myMage.calculateCharacterDPS();
 
-        System.out.println(myMage.getName());
-        System.out.println(weapon.getWeaponDPS());
-        System.out.println(myMage.getPrimaryAttribute().getStrength());
-        System.out.println(myMage.getTotalPrimaryAttribute().getStrength());
-        System.out.println(myMage.getCharacterDPS());
+        System.out.println(myMage.getDetails());
 
     }
 }

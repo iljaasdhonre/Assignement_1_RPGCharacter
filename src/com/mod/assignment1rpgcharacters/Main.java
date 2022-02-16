@@ -16,17 +16,17 @@ public class Main {
         // write your code here
 
         Weapon weapon = new Weapon();
-        weapon.setDamage(3);
+        weapon.setDamage(7);
         weapon.setWeaponType(WeaponType.STAFF);
-        weapon.setAttackSpeed(12.0);
-        weapon.setLevel(1);
+        weapon.setAttackSpeed(2.0);
+        weapon.setLevel(2);
         weapon.setItemSlot(Slot.WEAPON);
         weapon.setName("DeagleWand");
 
         Armor armor = new Armor();
         armor.setArmorType(ArmorType.CLOTH);
         armor.setItemSlot(Slot.BODY);
-        armor.setLevel(1);
+        armor.setLevel(2);
         armor.setName("Mithril");
         armor.setPrimaryAttribute(new PrimaryAttribute(1, 1, 5));
 

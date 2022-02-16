@@ -17,22 +17,14 @@ public class Mage extends Character {
                 new PrimaryAttribute(1, 1, 8));
     }
 
-    //Increases level by 1 and update attributes accordingly
-    @Override
+    //Increases level by 1 and update attributes accordingly by calling super.levelUp()
     public void levelUp() {
-        setLevel(this.level += 1);
-        updatePrimaryAttributes(1, 1, 5);
+        levelUp(1, 1, 5);
     }
 
-    //Returns the characters dps
-    @Override
+    //Returns the characters dps by calling super.calculateCharacterDPS()
     public double calculateCharacterDPS() {
-        double intelligence = totalPrimaryAttribute.getIntelligence();
-        if (this.equipment.get(Slot.WEAPON) != null) {
-            Weapon weapon = (Weapon) this.equipment.get(Slot.WEAPON);
-            this.setCharacterDPS(weapon.getWeaponDPS() * (1 + intelligence / 100));
-        } else this.setCharacterDPS(1 + intelligence / 100);
-        return this.getCharacterDPS();
+        return calculateCharacterDPS(totalPrimaryAttribute.getIntelligence());
     }
 
     //Checks whether a weapon is suitable to be equipped by this character otherwise throws an exception
@@ -45,7 +37,6 @@ public class Mage extends Character {
             equipment.put(Slot.WEAPON, weapon);
         } else {
             throw new InvalidWeaponException("You are not allowed to equip this weapon!");
-
         }
     }
 
@@ -60,6 +51,5 @@ public class Mage extends Character {
             throw new InvalidArmorException("You are not allowed to equip this armor!");
         }
     }
-
 
 }

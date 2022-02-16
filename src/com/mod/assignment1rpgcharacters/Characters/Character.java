@@ -8,6 +8,7 @@ import com.mod.assignment1rpgcharacters.Items.Item;
 import com.mod.assignment1rpgcharacters.Items.Weapon;
 
 import java.util.HashMap;
+import java.util.Map;
 
 // base class for all characters
 public abstract class Character {
@@ -78,13 +79,16 @@ public abstract class Character {
     }
 
     //Methods
-    abstract void levelUp();
-
-    abstract double calculateCharacterDPS();
 
     abstract void equipWeapon(Weapon weapon) throws InvalidWeaponException;
 
     abstract void equipArmor(Armor armor, Slot itemSlot) throws InvalidArmorException;
+
+    //Increase the level of character by 1 and update the attributes accordingly with given parameters
+    void levelUp(int strength, int dexterity, int intelligence) {
+        setLevel(this.level += 1);
+        updatePrimaryAttributes(strength, dexterity, intelligence);
+    }
 
     //Update the PRIMARY attributes of character with given parameters
     void updatePrimaryAttributes(int strength, int dexterity, int intelligence) {
@@ -104,5 +108,13 @@ public abstract class Character {
         );
     }
 
+    double calculateCharacterDPS(double totalMainAttribute) {
+        if (this.equipment.get(Slot.WEAPON) != null) {
+            Weapon weapon = (Weapon) this.equipment.get(Slot.WEAPON);
+            this.setCharacterDPS(weapon.getWeaponDPS() * (1 + totalMainAttribute / 100));
+        } else this.setCharacterDPS(1 + totalMainAttribute / 100);
+
+        return this.getCharacterDPS();
+    }
 
 }
